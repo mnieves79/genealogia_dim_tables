@@ -1,0 +1,89 @@
+DROP TABLE IF EXISTS `dim_parroquias`;
+
+CREATE TABLE `dim_parroquias` (
+  `PARR_CD` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PARROQUIA` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `MUN_CD` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DIO_CD` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`PARR_CD`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JQNA','San Joaquín y Santa Ana','ADJ','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('FCOA','San Francisco de Asís','AGD','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CARA','San Carlos Borromeo','AGL','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('REYA','Los Tres Santos Reyes','ABU','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JOSA','San José','AIB','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ABAA','San Antonio Abad','ANA','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('FELA','San Felipe Apóstol','ARE','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNA','Nuestra Señora del Carmen','ARR','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNB','Nuestra Señora del Carmen','BCL','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PADB','San Antonio de Padua','BQT','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CRZB','Invención de la Santa Cruz','BAY','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MGLC','San Miguel Arcángel','CAB','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JESC','Dulce Nombre de Jesús','CAG','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JOSC','San José','CAM','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PILC','Nuestra Señora del Pilar','CAN','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('FERC','San Fernando','CAR','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNT','Nuestra Señora del Carmen','CAT','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('AUSC','Nuestra Señora de la Asunción','CAY','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PADC','San Antonio de Padua','CEI','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ROSC','Nuestra Señora del Rosario','CIA','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMND','Nuestra Señora del Carmen','CID','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('BLAC','San Blas de Illescas','COA','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CSTC','Santo Cristo de la Salud','COM','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('FAMC','Sagrada Familia','COR','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNL','Nuestra Señora del Carmen','CUL','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PADD','San Antonio de Padua','DOR','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('STGF','Santiago Apóstol','FAJ','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MCDF','Nuestra Señora de la Merced','FLO','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ABAG','San Antonio Abad','GNC','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PADG','San Antonio de Padua','GYM','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CONG','La Inmaculada Concepción','GYL','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PEDG','San Pedro Martir','GYB','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JOSG','San José','GUR','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNH','Nuestra Señora del Carmen','HAT','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MONH','Nuestra Señora de Monserrate','HOR','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JESH','Dulce Nombre de Jesús','HUM','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PADI','San Antonio de Padua','ISA','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MONJ','Nuestra Señora de Monserrate','JAY','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('RMNJ','San Ramón Nonato','JUA','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CONJ','La Inmaculada Concepción','JUN','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CANL','Nuestra Señora De La Candelaria','LAJ','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JOSL','San José','LAR','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MARL','Inmaculado Corazón de María','LMA','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CONL','Nuestra Señora de la Concepción','LPI','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PATL','San Patricio','LOI','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JOSQ','San José','LUQ','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MANT','Nuestra Señora de la Candelaria','MAN','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('SJUM','San Juan Bautista','MAR','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ISIM','San Isidro Labrador','MAU','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MANY','Nuestra Señora de la Candelaria','MAY','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MONM','Nuestra Señora de Monserrate','MOC','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNM','Nuestra Señora del Carmen','MOR','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ROSN','Nuestra Señora del Rosario','NAG','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MGLN','San Miguel Arcángel','NAR','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('SJUO','San Juan Bautista','ORO','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MARP','Inmaculado Corazón de María','PAT','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('JOSP','San José','PEN','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('GUAP','Nuestra Señora de la Guadalupe','PON','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('RAFQ','San Rafael Arcángel','QUE','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ROSR','Santa Rosa de Lima','RIN','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNR','Nuestra Señora del Carmen','RGR','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ISIS','San Isidro Labrador','SGR','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MONS','Nuestra Señora de Monserrate','SAL','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('GERS','San Germán de Auxerre','SGE','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('REMS','Nuestra Señora de los Remedios','SJU','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('FCOS','San Francisco de Asís','SJU','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MERS','Nuestra Señora de las Mercedes','SLO','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('SEBS','San Sebastián Mártir','SSE','MAY');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('SANS','Santiago Apóstol','SIS','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('FERT','San Fernando','TAL','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('PEDT','San Pedro Apóstol','TBA','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CRZT','Exaltación de la Santa Cruz','TRU','SJU');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('MGLU','San Miguel Arcángel','UTU','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CONV','La Inmaculada Concepción','VAL','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ROSV','Nuestra Señora del Rosario','VBA','ARE');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CONQ','La Inmaculada Concepción','VIE','FAJ');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('CMNV','Nuestra Señora del Carmen','VIL','PON');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ANGY','Santos Angeles Custodios','YAB','CAG');
+INSERT INTO dim_parroquias(PARR_CD,PARROQUIA,MUN_CD,DIO_CD) VALUES('ROSY','Nuestra Señora del Rosario','YAU','PON');
