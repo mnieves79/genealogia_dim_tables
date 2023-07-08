@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------------------------- 
-Source: Portal Oficial del Gobierbo de Puerto Rico
+Source: Portal Oficial del Gobierno de Puerto Rico
 https://gis.pr.gov/descargaGeodatos/GeografiaCensal/Pages/ABREVIATURAS-DE-MUNICIPIOS.aspx
 ---------------------------------------------------------------------------------------- */
 DROP TABLE IF EXISTS `dim_municipios`;
