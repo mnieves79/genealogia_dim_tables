@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------- 
+List of Roman Catholic Parrishes in Puerto Rico as of the year 2023 - main parrishes only
+---------------------------------------------------------------------------------------- */
 DROP TABLE IF EXISTS `dim_parroquias`;
 
 CREATE TABLE `dim_parroquias` (
