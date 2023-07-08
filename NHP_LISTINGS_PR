@@ -1,3 +1,9 @@
+/* --------------------------------------------------------------------------------------- 
+List of sites or buildings in Puerto Rico in the National Register of Historic Places
+National Park Service - Database maintained by the National Archives
+This subset for Puerto Rico holds records up to the end of 2012
+Source: https://www.nps.gov/subjects/nationalregister/database-research.htm
+---------------------------------------------------------------------------------------- */
 DROP TABLE IF EXISTS `nhp_listings_pr`;
 
 CREATE TABLE `nhp_listings_pr` (
