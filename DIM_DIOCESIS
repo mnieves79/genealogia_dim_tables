@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------- 
+List of Roman Catholic Diocesis in Puerto Rico as of the year 2023 
+---------------------------------------------------------------------------------------- */
 DROP TABLE IF EXISTS `dim_diocesis`;
 
 CREATE TABLE `dim_diocesis` (
