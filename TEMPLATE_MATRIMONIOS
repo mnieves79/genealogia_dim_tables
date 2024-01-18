@@ -1,5 +1,5 @@
 CREATE TABLE abc1m_1750_1775 (
-  `mat_id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `folio` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `acta` int DEFAULT NULL,
   `fecha` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -10,12 +10,12 @@ CREATE TABLE abc1m_1750_1775 (
   `celebrante` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `testigos` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cal_daily_key` decimal(8,0) DEFAULT NULL,
-  `parr_cd` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT 'GERA',
+  `parr_cd` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT 'ABAA',
   `create_ts` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_ts` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `complete_ind` int DEFAULT '0',
   `apellido_novio` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `apellido_novia` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dispensados` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`mat_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
