@@ -1,0 +1,146 @@
+/* Identify Schema to create table in */
+USE sandbox;
+
+DROP TABLE IF EXISTS `dim_cal_gc_spain`;
+
+CREATE TABLE `dim_cal_gc_spain` (
+  `cal_daily_key` decimal(8,0) NOT NULL,
+  `cal_date_txt` varchar(10) DEFAULT NULL,
+  `cal_year` char(4) DEFAULT NULL,
+  `cal_month` char(2) DEFAULT NULL,
+  `cal_day` char(2) DEFAULT NULL,
+  `cal_month_nm_long_en` varchar(10) DEFAULT NULL,
+  `cal_month_nm_long_sp` varchar(10) DEFAULT NULL,
+  `cal_month_nm_short_en` varchar(3) DEFAULT NULL,
+  `cal_month_nm_short_sp` varchar(3) DEFAULT NULL,
+  `cal_day_nm_long_en` varchar(10) DEFAULT NULL,
+  `cal_day_nm_long_sp` varchar(10) DEFAULT NULL,
+  `cal_day_nm_short_en` varchar(3) DEFAULT NULL,
+  `cal_day_nm_short_sp` varchar(3) DEFAULT NULL,
+  `cal_leap_year` decimal(1,0) DEFAULT NULL,
+  `cal_day_id` decimal(7,0) NOT NULL DEFAULT '0',
+  `jc_cal_date_txt` varchar(10) DEFAULT NULL COMMENT 'This column represents the conversion to the Julian calendar (England) for the double dates time period of October 15, 1582 through September 13, 1752.',
+  `create_ts` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_ts` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   PRIMARY KEY (`cal_daily_key`),
+  KEY `index_cal_gc_spain_date` (`cal_date_txt`)
+);
+
+-- Populate the table with dates and corresponding day/month names
+INSERT INTO `dim_cal_gc_spain`
+(`cal_daily_key`,
+`cal_date_txt`,
+`cal_year`,
+`cal_month`,
+`cal_day`,
+`cal_month_nm_long_en`,
+`cal_month_nm_long_sp`,
+`cal_month_nm_short_en`,
+`cal_month_nm_short_sp`,
+`cal_day_nm_long_en`,
+`cal_day_nm_long_sp`,
+`cal_day_nm_short_en`,
+`cal_day_nm_short_sp`,
+`cal_leap_year`,
+`cal_day_id`,
+`jc_cal_date_txt`)
+
+SELECT
+    CAST(CAST(DATE_ADD('1582-10-15', INTERVAL seq DAY) AS DATE) AS UNSIGNED) AS CAL_DAILY_KEY, 
+    DATE_ADD('1582-10-15', INTERVAL seq DAY) AS GregorianDate,
+    CAST(YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR) AS GregorianYear,
+    LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0) AS GregorianMonth,
+    LPAD(CAST(DAY(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0) AS GregorianDay,
+    MONTHNAME(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS GregorianMonthNameLong,
+    CASE LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0)
+		when '01' then 'enero'
+        when '02' then 'febrero'
+        when '03' then 'marzo'
+        when '04' then 'abril'
+        when '05' then 'mayo'
+        when '06' then 'junio'
+        when '07' then 'julio'
+        when '08' then 'agosto'
+        when '09' then 'septiembre'
+        when '10' then 'octubre'
+        when '11' then 'noviembre'
+        when '12' then 'diciembre'
+    END AS GregorianMonthNameLong_ES,
+    DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%b')  AS GregorianMonthNameShort,
+    CASE LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0)
+		when '01' then 'ene'
+        when '02' then 'feb'
+        when '03' then 'mar'
+        when '04' then 'abr'
+        when '05' then 'may'
+        when '06' then 'jun'
+        when '07' then 'jul'
+        when '08' then 'ago'
+        when '09' then 'set' /*alternate spelling 'sep' */
+        when '10' then 'oct'
+        when '11' then 'nov'
+        when '12' then 'dic'
+    END   AS GregorianMonthNameShort_ES,
+    DAYNAME(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS GregorianDayNameLong,
+    CASE DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')
+		when 'Sun' then 'domingo'
+		when 'Mon' then 'lunes'
+		when 'Tue' then 'martes'
+		when 'Wed' then 'miércoles'
+		when 'Thu' then 'jueves'
+		when 'Fri' then 'viernes'
+		when 'Sat' then 'sábado'
+	END AS GregorianDayNameLong_ES,
+    DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')  AS GregorianDayNameShort,
+    CASE DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')
+		when 'Sun' then 'dom'
+		when 'Mon' then 'lun'
+		when 'Tue' then 'mar'
+		when 'Wed' then 'mié'
+		when 'Thu' then 'jue'
+		when 'Fri' then 'vie'
+		when 'Sat' then 'sáb'
+	END AS GregorianDayNameShort_ES,
+    IF((YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) % 4 = 0
+            AND YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) % 100 != 0)
+            OR YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) % 400 = 0,
+        1 /*is a leap year*/,
+        0 /*is not a leap year*/ 
+	) AS cal_leap_year,
+    CONCAT(CAST(YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR), LPAD(DAYOFYEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)),3,0) ) AS cal_day_id,
+    DATE_ADD('1582-10-05', INTERVAL seq DAY) AS JulianDate
+FROM (
+    SELECT
+        seq
+    FROM (
+        SELECT
+            (a.a + (10 * b.a) + (100 * c.a) + (1000 * d.a) + (10000 * e.a) + (100000 * f.a)) AS seq
+        FROM
+            (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS a,
+            (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS b,
+            (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS c,
+            (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS d,
+            (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS e,
+            (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS f
+    ) AS seq_0_to_999999
+    WHERE
+        DATE_ADD('1582-10-15', INTERVAL seq DAY) BETWEEN '1582-10-15' AND '2050-12-31'
+) AS valid_dates;
+
+
+/*remove julian dates after 1752-09-13*/
+UPDATE sandbox.dim_cal_gc_spain gc
+SET jc_cal_date_txt = null
+WHERE gc.cal_daily_key > 17520913;
+
+
+/*optional updates to replace hyphens with forward slashes*/
+/*UPDATE sandbox.dim_cal_gc_spain gc
+SET 
+ 	cal_date_txt = replace(cal_date_txt,'-','/'),
+ 	jc_cal_date_txt = replace(jc_cal_date_txt,'-','/')
+WHERE gc.cal_daily_key > 15820000;*/
+
+
+/*return results */
+SELECT * FROM dim_cal_gc_spain gc;
