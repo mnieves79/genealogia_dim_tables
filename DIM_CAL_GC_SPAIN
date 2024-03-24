@@ -26,7 +26,7 @@ CREATE TABLE `dim_cal_gc_spain` (
   KEY `index_cal_gc_spain_date` (`cal_date_txt`)
 );
 
--- Populate the table with dates and corresponding day/month names
+/*Populate the table with dates and corresponding day/month names*/
 INSERT INTO `dim_cal_gc_spain`
 (`cal_daily_key`,
 `cal_date_txt`,
@@ -44,14 +44,13 @@ INSERT INTO `dim_cal_gc_spain`
 `cal_leap_year`,
 `cal_day_id`,
 `jc_cal_date_txt`)
-
 SELECT
-    CAST(CAST(DATE_ADD('1582-10-15', INTERVAL seq DAY) AS DATE) AS UNSIGNED) AS CAL_DAILY_KEY, 
-    DATE_ADD('1582-10-15', INTERVAL seq DAY) AS GregorianDate,
-    CAST(YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR) AS GregorianYear,
-    LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0) AS GregorianMonth,
-    LPAD(CAST(DAY(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0) AS GregorianDay,
-    MONTHNAME(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS GregorianMonthNameLong,
+    CAST(CAST(DATE_ADD('1582-10-15', INTERVAL seq DAY) AS DATE) AS UNSIGNED)     AS CAL_DAILY_KEY, 
+    DATE_ADD('1582-10-15', INTERVAL seq DAY)                                     AS GregorianDate,
+    CAST(YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR)                 AS GregorianYear,
+    LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0)      AS GregorianMonth,
+    LPAD(CAST(DAY(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0)        AS GregorianDay,
+    MONTHNAME(DATE_ADD('1582-10-15', INTERVAL seq DAY))                          AS GregorianMonthNameLong,
     CASE LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0)
 		when '01' then 'enero'
         when '02' then 'febrero'
@@ -65,8 +64,8 @@ SELECT
         when '10' then 'octubre'
         when '11' then 'noviembre'
         when '12' then 'diciembre'
-    END AS GregorianMonthNameLong_ES,
-    DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%b')  AS GregorianMonthNameShort,
+    END                                                                           AS GregorianMonthNameLong_ES,
+    DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%b')                   AS GregorianMonthNameShort,
     CASE LPAD(CAST(MONTH(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR),2,0)
 		when '01' then 'ene'
         when '02' then 'feb'
@@ -80,8 +79,8 @@ SELECT
         when '10' then 'oct'
         when '11' then 'nov'
         when '12' then 'dic'
-    END   AS GregorianMonthNameShort_ES,
-    DAYNAME(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS GregorianDayNameLong,
+    END                                                                           AS GregorianMonthNameShort_ES,
+    DAYNAME(DATE_ADD('1582-10-15', INTERVAL seq DAY))                             AS GregorianDayNameLong,
     CASE DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')
 		when 'Sun' then 'domingo'
 		when 'Mon' then 'lunes'
@@ -91,7 +90,7 @@ SELECT
 		when 'Fri' then 'viernes'
 		when 'Sat' then 'sábado'
 	END AS GregorianDayNameLong_ES,
-    DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')  AS GregorianDayNameShort,
+    DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')                   AS GregorianDayNameShort,
     CASE DATE_FORMAT(DATE_ADD('1582-10-15', INTERVAL seq DAY), '%a')
 		when 'Sun' then 'dom'
 		when 'Mon' then 'lun'
@@ -100,15 +99,16 @@ SELECT
 		when 'Thu' then 'jue'
 		when 'Fri' then 'vie'
 		when 'Sat' then 'sáb'
-	END AS GregorianDayNameShort_ES,
+	END                                                                           AS GregorianDayNameShort_ES,
     IF((YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) % 4 = 0
             AND YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) % 100 != 0)
             OR YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) % 400 = 0,
         1 /*is a leap year*/,
         0 /*is not a leap year*/ 
-	) AS cal_leap_year,
+	)                                                                             AS cal_leap_year,
     CONCAT(CAST(YEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)) AS CHAR), LPAD(DAYOFYEAR(DATE_ADD('1582-10-15', INTERVAL seq DAY)),3,0) ) AS cal_day_id,
-    DATE_ADD('1582-10-05', INTERVAL seq DAY) AS JulianDate
+    /*conversion to Julian calendar, '1582-10-15' in GC = '1582-10-05' JC, England switched to GC on '1752-09-13' */
+    CASE when DATE_ADD('1582-10-15', INTERVAL seq DAY) < '1752-09-14' then DATE_ADD('1582-10-05', INTERVAL seq DAY) END                  AS JulianDate
 FROM (
     SELECT
         seq
@@ -122,25 +122,11 @@ FROM (
             (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS d,
             (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS e,
             (SELECT 0 AS a UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS f
-    ) AS seq_0_to_999999
-    WHERE
-        DATE_ADD('1582-10-15', INTERVAL seq DAY) BETWEEN '1582-10-15' AND '2050-12-31'
+    ) AS seq_0_to_999
+    WHERE /*data parameters from the gregorian calendar*/
+        DATE_ADD('1582-10-15', INTERVAL seq DAY) BETWEEN '1582-10-15' AND '2099-12-31'
 ) AS valid_dates;
 
-
-/*remove julian dates after 1752-09-13*/
-UPDATE sandbox.dim_cal_gc_spain gc
-SET jc_cal_date_txt = null
-WHERE gc.cal_daily_key > 17520913;
-
-
-/*optional updates to replace hyphens with forward slashes*/
-/*UPDATE sandbox.dim_cal_gc_spain gc
-SET 
- 	cal_date_txt = replace(cal_date_txt,'-','/'),
- 	jc_cal_date_txt = replace(jc_cal_date_txt,'-','/')
-WHERE gc.cal_daily_key > 15820000;*/
-
-
 /*return results */
-SELECT * FROM dim_cal_gc_spain gc;
+SELECT min(cal_daily_key), max(cal_daily_key), count(1) as row_count 
+FROM dim_cal_gc_spain gc;
