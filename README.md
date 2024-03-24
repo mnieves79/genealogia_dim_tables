@@ -13,8 +13,14 @@ SELECT
     p.PARROQUIA, 
     p.PARR_CD,
     d.DIOCESIS,
-    d.DIO_CD </br>
+    d.DIO_CD </br> 
 FROM dim_parroquias p </br>
 INNER JOIN dim_diocesis d ON p.DIO_CD = d.DIO_CD </br>
 INNER JOIN dim_municipios m	ON p.MUN_CD = m.MUN_CD </br>
 ORDER BY m.MUNICIPIO;
+
+
+2024-03-24
+DIM_CAL_GC_SPAIN
+Added script which creates tables with dates in Spanish and English with conversion of Julian to Gregorian dates in Spain and its colonies (1582-10-15 through 2050-12-31). 
+Julian dates also provided for 1582-10-15 through 1752-09-13 (date when England and its colonies adopted the Gregorian calendar).
