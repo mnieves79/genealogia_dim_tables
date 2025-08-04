@@ -23,3 +23,5 @@ VALUES
 	('*','[---]','* [---]',11),
 	('H','HI','hija ilegitima',12),
 	('V','HI','hijo ilegitimo',13);
+	('V','IG','hijo de la iglesia',14);
+	('H','IG','hija de la iglesia',15);
