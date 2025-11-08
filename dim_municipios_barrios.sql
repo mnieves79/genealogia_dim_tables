@@ -1,6 +1,7 @@
-/* *****
-'Table containing all barrios (neighborhoods) in Puerto Rico. Data sourced from https://gist.github.com/janielMartell/';
-****** */
+/* --------------------------------------------------------------------------------------- 
+'Table containing all barrios (neighborhoods) in Puerto Rico. 
+Data sourced from https://gist.github.com/janielMartell/';
+---------------------------------------------------------------------------------------  */
 
 CREATE TABLE `dim_municipios_barrios` (
   `BARRIO_ID` int NOT NULL AUTO_INCREMENT,
