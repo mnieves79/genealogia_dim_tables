@@ -17,7 +17,7 @@ INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aguada','AGD',0
 INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aguadilla','AGL',005,72005);
 INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aguas Buenas','ABU',007,72007);
 INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aibonito','AIB',009,72009);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Anasco','ANA',011,72011);
+INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Añasco','ANA',011,72011);
 INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Arecibo','ARE',013,72013);
 INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Arroyo','ARR',015,72015);
 INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Barceloneta','BCL',017,72017);
