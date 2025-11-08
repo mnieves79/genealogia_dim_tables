@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS `dim_estado_filial`;
-
 CREATE TABLE `dim_estado_filial` (
   `sexo_cd` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `estado_filial` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Hijo Legitimo o Natural',
