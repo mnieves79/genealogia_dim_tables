@@ -1,8 +1,3 @@
-/* Identify Schema to create table in */
-USE sandbox;
-
-DROP TABLE IF EXISTS `dim_cal_gc_spain`;
-
 CREATE TABLE `dim_cal_gc_spain` (
   `cal_daily_key` decimal(8,0) NOT NULL,
   `cal_date_txt` varchar(10) DEFAULT NULL,
