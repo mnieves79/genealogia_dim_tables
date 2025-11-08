@@ -2,91 +2,18 @@
 Source: Portal Oficial del Gobierno de Puerto Rico
 https://gis.pr.gov/descargaGeodatos/GeografiaCensal/Pages/ABREVIATURAS-DE-MUNICIPIOS.aspx
 ---------------------------------------------------------------------------------------- */
-DROP TABLE IF EXISTS `dim_municipios`;
 
 CREATE TABLE `dim_municipios` (
-  `MUNICIPIO` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MUN_CD` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MUNICIPIO` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `MUN_CD` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `FIPS` int DEFAULT NULL,
   `GEOID` int DEFAULT NULL,
+  `AÑO_FUNDADO` varchar(4) DEFAULT NULL,
+  `AREA_MI2` double DEFAULT NULL,
+  `AREA_KM2` double DEFAULT NULL,
   PRIMARY KEY (`MUN_CD`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Adjuntas','ADJ',001,72001);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aguada','AGD',003,72003);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aguadilla','AGL',005,72005);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aguas Buenas','ABU',007,72007);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Aibonito','AIB',009,72009);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Añasco','ANA',011,72011);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Arecibo','ARE',013,72013);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Arroyo','ARR',015,72015);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Barceloneta','BCL',017,72017);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Barranquitas','BQT',019,72019);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Bayamón','BAY',021,72021);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Cabo Rojo','CAB',023,72023);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Caguas','CAG',025,72025);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Camuy','CAM',027,72027);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Canóvanas','CAN',029,72029);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Carolina','CAR',031,72031);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Cataño','CAT',033,72033);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Cayey','CAY',035,72035);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Ceiba','CEI',037,72037);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Ciales','CIA',039,72039);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Cidra','CID',041,72041);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Coamo','COA',043,72043);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Comerío','COM',045,72045);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Corozal','COR',047,72047);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Culebra','CUL',049,72049);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Dorado','DOR',051,72051);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Fajardo','FAJ',053,72053);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Florida','FLO',054,72054);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Guánica','GNC',055,72055);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Guayama','GYM',057,72057);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Guayanilla','GYL',059,72059);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Guaynabo','GYB',061,72061);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Gurabo','GUR',063,72063);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Hatillo','HAT',065,72065);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Hormigueros','HOR',067,72067);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Humacao','HUM',069,72069);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Isabela','ISA',071,72071);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Jayuya','JAY',073,72073);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Juana Díaz','JUA',075,72075);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Juncos','JUN',077,72077);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Lajas','LAJ',079,72079);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Lares','LAR',081,72081);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Las Marías','LMA',083,72083);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Las Piedras','LPI',085,72085);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Loíza','LOI',087,72087);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Luquillo','LUQ',089,72089);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Manatí','MAN',091,72091);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Maricao','MAR',093,72093);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Maunabo','MAU',095,72095);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Mayagüez','MAY',097,72097);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Moca','MOC',099,72099);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Morovis','MOR',101,72101);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Naguabo','NAG',103,72103);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Naranjito','NAR',105,72105);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Orocovis','ORO',107,72107);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Patillas','PAT',109,72109);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Peñuelas','PEN',111,72111);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Ponce','PON',113,72113);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Quebradillas','QUE',115,72115);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Rincón','RIN',117,72117);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Río Grande','RGR',119,72119);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Sabana Grande','SGR',121,72121);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Salinas','SAL',123,72123);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('San Germán','SGE',125,72125);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('San Juan','SJU',127,72127);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('San Lorenzo','SLO',129,72129);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('San Sebastián','SSE',131,72131);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Santa Isabel','SIS',133,72133);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Toa Alta','TAL',135,72135);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Toa Baja','TBA',137,72137);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Trujillo Alto','TRU',139,72139);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Utuado','UTU',141,72141);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Vega Alta','VAL',143,72143);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Vega Baja','VBA',145,72145);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Vieques','VIE',147,72147);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Villalba','VIL',149,72149);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Yabucoa','YAB',151,72151);
-INSERT INTO dim_municipios(Municipio,MUN_CD,FIPS,GEOID) VALUES ('Yauco','YAU',153,72153);
+/* INSERT DATA*/
+INSERT INTO `dim_municipios` 
+VALUES ('Aguas Buenas', 'ABU', 7, 72007, '1838', 30.08, 77.92), ('Adjuntas', 'ADJ', 1, 72001, '1815', 66.69, 172.73), ('Aguada', 'AGD', 3, 72003, '1639', 30.85, 79.9), ('Aguadilla', 'AGL', 5, 72005, '1775', 36.53, 94.61), ('Aibonito', 'AIB', 9, 72009, '1824', 31.31, 81.1), ('Añasco', 'ANA', 11, 72011, '1733', 39.29, 101.75), ('Arecibo', 'ARE', 13, 72013, '1616', 125.95, 326.2), ('Arroyo', 'ARR', 15, 72015, '1855', 15.01, 38.87), ('Bayamón', 'BAY', 21, 72021, '1772', 44.32, 114.8), ('Barceloneta', 'BCL', 17, 72017, '1881', 18.69, 48.41), ('Barranquitas', 'BQT', 19, 72019, '1803', 34.25, 88.71), ('Cabo Rojo', 'CAB', 23, 72023, '1771', 70.37, 182.27), ('Caguas', 'CAG', 25, 72025, '1775', 58.6, 151.77), ('Camuy', 'CAM', 27, 72027, '1807', 46.35, 120.06), ('Canóvanas', 'CAN', 29, 72029, '1909', 32.87, 85.12), ('Carolina', 'CAR', 31, 72031, '1816', 45.32, 117.38), ('Cataño', 'CAT', 33, 72033, '1927', 4.84, 12.55), ('Cayey', 'CAY', 35, 72035, '1773', 51.93, 134.51), ('Ceiba', 'CEI', 37, 72037, '1838', 29.04, 75.2), ('Ciales', 'CIA', 39, 72039, '1820', 66.53, 172.31), ('Cidra', 'CID', 41, 72041, '1809', 36.02, 93.29), ('Coamo', 'COA', 43, 72043, '1579', 78.1, 202.27), ('Comerío', 'COM', 45, 72045, '1826', 28.4, 73.56), ('Corozal', 'COR', 47, 72047, '1795', 42.57, 110.26), ('Culebra', 'CUL', 49, 72049, '1880', 11.62, 30.1), ('Dorado', 'DOR', 51, 72051, '1842', 23.09, 59.8), ('Fajardo', 'FAJ', 53, 72053, '1772', 29.86, 77.34), ('Florida', 'FLO', 54, 72054, '1971', 15.21, 39.39), ('Guánica', 'GNC', 55, 72055, '1914', 37.05, 95.96), ('Gurabo', 'GUR', 63, 72063, '1815', 27.89, 72.23), ('Guaynabo', 'GYB', 61, 72061, '1769', 27.58, 71.43), ('Guayanilla', 'GYL', 59, 72059, '1833', 42.27, 109.48), ('Guayama', 'GYM', 57, 72057, '1736', 64.99, 168.32), ('Hatillo', 'HAT', 65, 72065, '1823', 41.78, 108.21), ('Hormigueros', 'HOR', 67, 72067, '1874', 11.34, 29.37), ('Humacao', 'HUM', 69, 72069, '1722', 44.75, 115.9), ('Isabela', 'ISA', 71, 72071, '1819', 55.3, 143.23), ('Jayuya', 'JAY', 73, 72073, '1911', 44.53, 115.33), ('Juana Díaz', 'JUA', 75, 72075, '1798', 60.28, 156.12), ('Juncos', 'JUN', 77, 72077, '1797', 26.49, 68.61), ('Lajas', 'LAJ', 79, 72079, '1883', 59.95, 159.15), ('Lares', 'LAR', 81, 72081, '1827', 61.45, 159.15), ('Las Marías', 'LMA', 83, 72083, '1871', 46.36, 120.07), ('Loíza', 'LOI', 87, 72087, '1719', 19.37, 50.17), ('Las Piedras', 'LPI', 85, 72085, '1773', 33.88, 87.75), ('Luquillo', 'LUQ', 89, 72089, '1797', 25.81, 66.85), ('Manatí', 'MAN', 91, 72091, '1738', 46.13, 119.48), ('Maricao', 'MAR', 93, 72093, '1874', 36.62, 94.85), ('Maunabo', 'MAU', 95, 72095, '1799', 21.07, 54.57), ('Mayagüez', 'MAY', 97, 72097, '1760', 77.65, 201.11), ('Moca', 'MOC', 99, 72099, '1772', 50.34, 130.38), ('Morovis', 'MOR', 101, 72101, '1818', 38.87, 100.67), ('Naguabo', 'NAG', 103, 72103, '1821', 51.66, 133.8), ('Naranjito', 'NAR', 105, 72105, '1824', 27.4, 70.97), ('Orocovis', 'ORO', 107, 72107, '1825', 63.62, 164.78), ('Patillas', 'PAT', 109, 72109, '1811', 46.7, 120.95), ('Peñuelas', 'PEN', 111, 72111, '1793', 44.62, 115.57), ('Ponce', 'PON', 113, 72113, '1692', 114.76, 297.23), ('Quebradillas', 'QUE', 115, 72115, '1823', 22.68, 58.74), ('Río Grande', 'RGR', 119, 72119, '1840', 60.62, 157.01), ('Rincón', 'RIN', 117, 72117, '1771', 14.29, 37.01), ('Salinas', 'SAL', 123, 72123, '1851', 69.37, 179.67), ('San Germán', 'SGE', 125, 72125, '1573', 54.5, 141.15), ('Sabana Grande', 'SGR', 121, 72121, '1813', 35.83, 92.8), ('Santa Isabel', 'SIS', 133, 72133, '1842', 34.02, 88.119), ('San Juan', 'SJU', 127, 72127, '1519', 47.85, 123.93), ('San Lorenzo', 'SLO', 129, 72129, '1811', 53.11, 137.55), ('San Sebastián', 'SSE', 131, 72131, '1752', 70.42, 182.39), ('Toa Alta', 'TAL', 135, 72135, '1751', 27.02, 69.98), ('Toa Baja', 'TBA', 137, 72137, '1745', 23.24, 60.19), ('Trujillo Alto', 'TRU', 139, 72139, '1801', 20.76, 53.77), ('Utuado', 'UTU', 141, 72141, '1739', 113.53, 294.04), ('Vega Alta', 'VAL', 143, 72143, '1775', 27.73, 71.82), ('Vega Baja', 'VBA', 145, 72145, '1776', 45.86, 118.78), ('Vieques', 'VIE', 147, 72147, '1852', 50.77, 131.49), ('Villalba', 'VIL', 149, 72149, '1917', 35.64, 92.31), ('Yabucoa', 'YAB', 151, 72151, '1793', 55.21, 142.99), ('Yauco', 'YAU', 153, 72153, '1756', 68.19, 176.61);
